@@ -1,0 +1,92 @@
+﻿@model Application
+
+<h1 class="text-center">Enter a Movie</h1>
+
+<div class="container">
+    <form method="post">
+        <!-- input for category -->
+        <div class="form-group">
+            <label for="Category">Category:</label>
+            <input asp-for="Category" class="form-control" />
+        </div>
+
+        <!-- input for subcategory -->
+        <div class="form-group">
+            <label for="SubCategory">Sub-Category (Leave Blank if N/A):</label>
+            <input asp-for="SubCategory" class="form-control" />
+        </div>
+
+        <!-- input for title -->
+        <div class="form-group">
+            <label for="Title">Title:</label>
+            <input asp-for="Title" class="form-control" />
+        </div>
+
+        <!-- input for year -->
+        <div class="form-group">
+            <label for="Year">Year:</label>
+            <input asp-for="Year" class="form-control" />
+        </div>
+
+        <!-- input for director 1 -->
+        <div class="form-group">
+            <label for="Director1">Director 1:</label>
+            <input asp-for="Director1" class="form-control" />
+        </div>
+
+        <!-- input for director 2 -->
+        <div class="form-group">
+            <label for="Director2">Director 2 (Leave Blank if N/A):</label>
+            <input asp-for="Director2" class="form-control" />
+        </div>
+
+        <!-- input for director 3 -->
+        <div class="form-group">
+            <label for="Director3">Director 3 (Leave Blank if N/A):</label>
+            <input asp-for="Director3" class="form-control" />
+        </div>
+
+        <!-- input for rating -->
+        <div class="form-group">
+            <label for="Rating">Rating:</label>
+            <select asp-for="Rating" class="form-control">
+                <option value="G">G</option>
+                <option value="PG">PG</option>
+                <option value="PG-13">PG-13</option>
+                <option value="R">R</option>
+            </select>
+        </div>
+
+        <!-- input for edited -->
+        <div class="form-group">
+            <label for="Edited">Edited?</label>
+            <select asp-for="Edited" class="form-control">
+                <option value=""></option>
+                <option value="true">Yes</option>
+                <option value="false">No</option>
+            </select>
+        </div>
+
+        <!-- input for lent to -->
+        <div class="form-group">
+            <label for="LentTo">Lent To:</label>
+            <input asp-for="LentTo" class="form-control" />
+        </div>
+
+        <!-- input for notes -->
+        <div class="form-group">
+            <label for="Notes">Notes:</label>
+            <input asp-for="Notes" class="form-control" maxlength="25" />
+        </div>
+
+        <button type="submit" class="btn btn-primary">Submit</button>
+    </form>
+
+    <!--message if successful-->
+    @if (ViewData["SuccessMessage"] != null)
+    {
+        <div class="alert alert-success mt-3" role="alert">
+            @ViewData["SuccessMessage"]
+        </div>
+    }
+</div>

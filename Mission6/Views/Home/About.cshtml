@@ -1,0 +1,43 @@
+﻿@{
+    ViewData["Title"] = "Get to Know Joel";
+}
+
+<!DOCTYPE html>
+<html>
+<head>
+    <title>@ViewData["Title"]</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+</head>
+<body>
+
+    <div class="container">
+        <!--title-->
+        <h1 class="display-4 text-center">@ViewData["Title"]</h1>
+
+        <!--links section-->
+        <div class="row justify-content-center mt-5">
+            <!--link for Quick Wits Comedy-->
+            <div class="col-md-6 text-center">
+                <a href="https://www.qwcomedy.com/" title="QW Comedy" class="btn btn-primary btn-lg btn-block">QW Comedy</a>
+            </div>
+            <!--link to Bacon Sale-->
+            <div class="col-md-6 text-center">
+                <a href="https://baconsale.com/" title="Bacon Sale" class="btn btn-primary btn-lg btn-block">Bacon Sale</a>
+            </div>
+        </div>
+
+        <!--image section-->
+        <div class="row justify-content-center mt-5">
+            <!--image with link to Bacon Sale-->
+            <div class="col-md-6 text-center">
+                <a href="https://baconsale.com/">
+                    <img src="~/img/baconsalekate.jpg" alt="Bacon Sale Kate" class="img-fluid rounded">
+                </a>
+            </div>
+        </div>
+    </div>
+
+</body>
+</html>
+
+
