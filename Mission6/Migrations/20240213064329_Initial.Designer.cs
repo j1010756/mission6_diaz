@@ -10,7 +10,7 @@ using Mission6_Diaz.Models;
 
 namespace Mission6_Diaz.Migrations
 {
-    [DbContext(typeof(MovieApplicationContext))]
+    [DbContext(typeof(MovieContext))]
     [Migration("20240213064329_Initial")]
     partial class Initial
     {

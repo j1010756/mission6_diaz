@@ -9,7 +9,7 @@ using Mission6_Diaz.Models;
 
 namespace Mission6_Diaz.Migrations
 {
-    [DbContext(typeof(MovieApplicationContext))]
+    [DbContext(typeof(MovieContext))]
     partial class MovieApplicationContextModelSnapshot : ModelSnapshot
     {
         protected override void BuildModel(ModelBuilder modelBuilder)

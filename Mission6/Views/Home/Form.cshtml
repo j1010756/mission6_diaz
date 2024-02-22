@@ -1,19 +1,22 @@
-﻿@model Application
+﻿@model Movie
 
 <h1 class="text-center">Enter a Movie</h1>
 
 <div class="container">
     <form method="post">
-        <!-- input for category -->
+        <!--movie id to make edit/delete easier-->
+        <input type="hidden" asp-for="MovieId" />
+
+        <!-- input for category, get name from db -->
         <div class="form-group">
             <label for="Category">Category:</label>
-            <input asp-for="Category" class="form-control" />
-        </div>
-
-        <!-- input for subcategory -->
-        <div class="form-group">
-            <label for="SubCategory">Sub-Category (Leave Blank if N/A):</label>
-            <input asp-for="SubCategory" class="form-control" />
+            <select asp-for="CategoryId">
+                <option value="">Select a Category:</option>
+                @foreach (Category c in ViewBag.Categories)
+                {
+                    <option value="@c.CategoryId">@c.CategoryName</option>
+                }
+            </select>
         </div>
 
         <!-- input for title -->
@@ -28,22 +31,10 @@
             <input asp-for="Year" class="form-control" />
         </div>
 
-        <!-- input for director 1 -->
+        <!-- input for directors -->
         <div class="form-group">
-            <label for="Director1">Director 1:</label>
-            <input asp-for="Director1" class="form-control" />
-        </div>
-
-        <!-- input for director 2 -->
-        <div class="form-group">
-            <label for="Director2">Director 2 (Leave Blank if N/A):</label>
-            <input asp-for="Director2" class="form-control" />
-        </div>
-
-        <!-- input for director 3 -->
-        <div class="form-group">
-            <label for="Director3">Director 3 (Leave Blank if N/A):</label>
-            <input asp-for="Director3" class="form-control" />
+            <label for="Director">Director:</label>
+            <input asp-for="Director" class="form-control" />
         </div>
 
         <!-- input for rating -->
