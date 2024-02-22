@@ -1,14 +1,31 @@
 ﻿@model Movie
-<h2>Confirm Deletion</h2>
-<h3>@Model.Title</h3>
- 
-<!--form to let user confirm deletion-->
-<form method="post">
 
-    <!--make sure right movie-->
-    <input type="hidden" asp-for="MovieId"/>
-    <button type="submit">Delete</button>
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Delete Movie</title>
+</head>
+<body>
 
-    <!--return to database view if user cancels-->
-    <a class="btn btn-info" asp-controller="Home" asp-action="MovieCollection">Return to Collection</a>
-</form>
+<div class="container">
+    <div class="row justify-content-center align-items-center" style="height: 100vh;">
+        <div class="col-md-6 text-center">
+            <h2>Confirm Deletion</h2>
+            <h3>"@Model.Title" will be deleted from the database</h3>
+
+            <!-- Form to let user confirm deletion -->
+            <form method="post" class="mt-3">
+                <!-- Make sure right movie -->
+                <input type="hidden" asp-for="MovieId" />
+                <button type="submit" class="btn btn-danger">Delete</button>
+
+                <!-- Return to database view if user cancels -->
+                <a class="btn btn-info" asp-controller="Home" asp-action="MovieCollection">Return to Collection</a>
+            </form>
+        </div>
+    </div>
+</div>
+
+</body>
+</html>
+

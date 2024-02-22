@@ -21,6 +21,8 @@ namespace Mission6_Diaz.Models
 
         // release year
         [Required(ErrorMessage = "The release year is required.")]
+        // make min year 1888
+        [Range(1888, int.MaxValue, ErrorMessage = "The year must be 1888 or later.")]
         public int Year { get; set; }
 
         // director

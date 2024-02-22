@@ -1,39 +1,41 @@
 ﻿@model List<Movie>
 
-<!--table to display movies-->
-<table class="table table-bordered">
-    <thead class="fw-bold">
-        <tr>
-            <td>Category</td>
-            <td>Title</td>
-            <td>Year</td>
-            <td>Director</td>
-            <td>Rating</td>
-            <td>Edited</td>
-            <td>Lent To</td>
-            <td>Copied To Plex</td>
-            <td>Notes</td>
-        </tr>
-    </thead>
-
-    <!--display values from database-->
-    @foreach (var x in Model)
-    {
-        <tbody>
+    <!--table to display movies-->
+    <table class="table table-bordered table-striped">
+        <thead class="fw-bold">
             <tr>
-                <td>@x.Category</td>
-                <td>@x.Title</td>
-                <td>@x.Year</td>
-                <td>@x.Director</td>
-                <td>@x.Rating</td>
-                <td>@x.Edited</td>
-                <td>@x.LentTo</td>
-                <td>@x.CopiedToPlex</td>
-                <td>@x.Notes</td>
-
-                <td><a class="btn btn-info" asp-controller="Home" asp-action="EditMovie" asp-route-id="@x.MovieId">Edit</a></td>
-                <td><a class="btn btn-danger" asp-controller="Home" asp-action="DeleteConfirmation" asp-route-id="@x.MovieId">Delete</a></td>
+                <th>Category</th>
+                <th>Title</th>
+                <th>Year</th>
+                <th>Director</th>
+                <th>Rating</th>
+                <th>Edited</th>
+                <th>Lent To</th>
+                <th>Copied To Plex</th>
+                <th>Notes</th>
+                <th>Edit</th>
+                <th>Delete</th>
             </tr>
+        </thead>
+
+        <!--display values from database-->
+        <tbody>
+            @foreach (var x in Model)
+            {
+                <tr>
+                    <td>@x.Category?.CategoryName</td>
+                    <td>@x.Title</td>
+                    <td>@x.Year</td>
+                    <td>@x.Director</td>
+                    <td>@x.Rating</td>
+                    <td>@x.Edited</td>
+                    <td>@x.LentTo</td>
+                    <td>@x.CopiedToPlex</td>
+                    <td>@x.Notes</td>
+                    <td><a class="btn btn-info" asp-controller="Home" asp-action="EditMovie" asp-route-id="@x.MovieId">Edit</a></td>
+                    <td><a class="btn btn-danger" asp-controller="Home" asp-action="DeleteConfirmation" asp-route-id="@x.MovieId">Delete</a></td>
+                </tr>
+            }
         </tbody>
-    }
-</table>
+    </table>
+

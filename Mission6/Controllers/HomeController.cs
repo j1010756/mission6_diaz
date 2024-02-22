@@ -1,4 +1,5 @@
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.EntityFrameworkCore;
 using Mission6_Diaz.Models;
 using System.Diagnostics;
 
@@ -49,8 +50,15 @@ namespace Mission6_Diaz.Controllers
                 _context.Movies.Add(response); // add record to db
                 _context.SaveChanges();
 
-                // message if successful submit
-                ViewData["SuccessMessage"] = "Form submitted successfully.";
+                // create viewbag to get category names from category table
+                ViewBag.Categories = _context.Categories
+                .OrderBy(x => x.CategoryName)
+                .ToList();
+
+                // message if successful
+                ViewBag.SuccessMessage = "Form submitted successfully!";
+
+                // return view
                 return View("Form", response);
             }
             else // invalid data
@@ -70,6 +78,9 @@ namespace Mission6_Diaz.Controllers
             // use linq to get info from database
             var movies = _context.Movies
 
+                // include categories
+                .Include(m => m.Category)
+
                 // order movies by title
                 .OrderBy(x => x.Title).ToList();
 
@@ -86,6 +97,11 @@ namespace Mission6_Diaz.Controllers
             var recordToEdit = _context.Movies
                 .Single(x => x.MovieId == id);
 
+            // get category names
+            ViewBag.Categories = _context.Categories
+                .OrderBy(x => x.CategoryName)
+                .ToList();
+
             // return record
             return View("Form", recordToEdit);
         }
@@ -94,14 +110,28 @@ namespace Mission6_Diaz.Controllers
         [HttpPost]
         public IActionResult EditMovie(Movie updatedForm)
         {
-            // update info
-            _context.Update(updatedForm);
+            // get category names
+            ViewBag.Categories = _context.Categories
+                .OrderBy(x => x.CategoryName)
+                .ToList();
 
-            // save change to db
-            _context.SaveChanges();
+            // make sure form is updated correctly
+            if (ModelState.IsValid)
+            {
+                // update info
+                _context.Update(updatedForm);
 
-            // redirect to movie collection
-            return RedirectToAction("MovieCollection");
+                // save change to db
+                _context.SaveChanges();
+
+                // redirect to movie collection
+                return RedirectToAction("MovieCollection");
+            }
+            else 
+            {
+                return View("Form", updatedForm);
+            }
+
         }
 
         // get delete page
